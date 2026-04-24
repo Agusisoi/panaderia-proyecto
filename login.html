@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Casa del Pan — Acceder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+      .auth-container {
+        min-height: 100vh;
+        background-color: #fdf8f0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .auth-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: #3b2a1a;
+        margin-bottom: 8px;
+      }
+
+      .auth-subtitulo {
+        color: #888;
+        margin-bottom: 32px;
+        font-size: 0.95rem;
+      }
+
+      .auth-caja {
+        background-color: #fff;
+        border: 2px solid #d4b896;
+        border-radius: 10px;
+        padding: 40px 36px;
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .auth-tabs {
+        display: flex;
+        margin-bottom: 28px;
+        border-bottom: 2px solid #d4b896;
+      }
+
+      .auth-tab {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        font-weight: 700;
+        color: #aaa;
+        font-family: 'Lato', sans-serif;
+        background: none;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .auth-tab.activo {
+        color: #3b2a1a;
+        border-bottom: 3px solid #6b3f2a;
+        margin-bottom: -2px;
+      }
+
+      .auth-form {
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .auth-form.visible {
+        display: flex;
+      }
+
+      .auth-form label {
+        font-weight: 700;
+        color: #3b2a1a;
+        margin-bottom: 4px;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      .auth-form input {
+        width: 100%;
+        padding: 10px 14px;
+        border: 2px solid #d4b896;
+        border-radius: 4px;
+        font-family: 'Lato', sans-serif;
+        font-size: 1rem;
+        background-color: #fdf8f0;
+        color: #2c2c2c;
+      }
+
+      .auth-form input:focus {
+        outline: none;
+        border-color: #6b3f2a;
+      }
+
+      .auth-form button {
+        width: 100%;
+        padding: 12px;
+        background-color: #6b3f2a;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
+        margin-top: 8px;
+      }
+
+      .auth-form button:hover {
+        background-color: #3b2a1a;
+      }
+
+      .auth-volver {
+        margin-top: 24px;
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      .auth-volver a {
+        color: #6b3f2a;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .auth-volver a:hover {
+        text-decoration: underline;
+      }
+
+      .mensaje-ok {
+        display: none;
+        background-color: #d4edda;
+        color: #2d6a3f;
+        border: 1px solid #b5d9c2;
+        border-radius: 4px;
+        padding: 12px;
+        text-align: center;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="auth-container">
+      <div class="auth-logo">🍞 La Casa del Pan</div>
+      <p class="auth-subtitulo">Accedé o creá tu cuenta</p>
+
+      <div class="auth-caja">
+
+        <!-- TABS -->
+        <div class="auth-tabs">
+          <button class="auth-tab activo" onclick="mostrarTab('login')">Iniciar sesión</button>
+          <button class="auth-tab" onclick="mostrarTab('registro')">Registrarse</button>
+        </div>
+
+        <!-- FORMULARIO LOGIN -->
+        <div id="form-login" class="auth-form visible">
+          <div>
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" placeholder="tu@email.com">
+          </div>
+          <div>
+            <label for="login-pass">Contraseña</label>
+            <input type="password" id="login-pass" placeholder="Tu contraseña">
+          </div>
+          <div id="msg-login" class="mensaje-ok">✅ ¡Bienvenido de vuelta!</div>
+          <button onclick="simularLogin()">Entrar</button>
+        </div>
+
+        <!-- FORMULARIO REGISTRO -->
+        <div id="form-registro" class="auth-form">
+          <div>
+            <label for="reg-nombre">Nombre completo</label>
+            <input type="text" id="reg-nombre" placeholder="Tu nombre">
+          </div>
+          <div>
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" placeholder="tu@email.com">
+          </div>
+          <div>
+            <label for="reg-pass">Contraseña</label>
+            <input type="password" id="reg-pass" placeholder="Elegí una contraseña">
+          </div>
+          <div>
+            <label for="reg-pass2">Repetir contraseña</label>
+            <input type="password" id="reg-pass2" placeholder="Repetí la contraseña">
+          </div>
+          <div id="msg-registro" class="mensaje-ok">✅ ¡Cuenta creada con éxito!</div>
+          <button onclick="simularRegistro()">Crear cuenta</button>
+        </div>
+
+      </div>
+
+      <p class="auth-volver">
+        <a href="index.html">← Volver a la página principal</a>
+      </p>
+    </div>
+
+    <script>
+      function mostrarTab(tab) {
+        document.getElementById('form-login').classList.remove('visible');
+        document.getElementById('form-registro').classList.remove('visible');
+        document.getElementById('form-' + tab).classList.add('visible');
+
+        document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('activo'));
+        event.target.classList.add('activo');
+      }
+
+      function simularLogin() {
+        const email = document.getElementById('login-email').value;
+        const pass = document.getElementById('login-pass').value;
+        if (email && pass) {
+          document.getElementById('msg-login').style.display = 'block';
+        } else {
+          alert('Completá todos los campos.');
+        }
+      }
+
+      function simularRegistro() {
+        const nombre = document.getElementById('reg-nombre').value;
+        const email = document.getElementById('reg-email').value;
+        const pass = document.getElementById('reg-pass').value;
+        const pass2 = document.getElementById('reg-pass2').value;
+        if (!nombre || !email || !pass || !pass2) {
+          alert('Completá todos los campos.');
+          return;
+        }
+        if (pass !== pass2) {
+          alert('Las contraseñas no coinciden.');
+          return;
+        }
+        document.getElementById('msg-registro').style.display = 'block';
+      }
+    </script>
+
+  </body>
+</html>

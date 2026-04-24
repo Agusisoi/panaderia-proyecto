@@ -36,6 +36,9 @@ nav a {
   text-decoration: none;
   margin-left: 24px;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 nav a:hover {
@@ -44,8 +47,13 @@ nav a:hover {
 
 /* === HERO === */
 .hero {
-  background-color: #6b3f2a;
+  background-color: var(--color-secundario);
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   text-align: center;
   padding: 80px 40px;
 }
@@ -117,11 +125,13 @@ nav a:hover {
 
 .tarjeta {
   display: inline-block;
+  width: 220px;
+  flex: 1 1 280px;
+  max-width: 280px;
   background-color: #fdf8f0;
   color: #2c2c2c;
   padding: 28px 24px;
   border-radius: 8px;
-  width: 220px;
 }
 
 .emoji {
@@ -147,4 +157,20 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 0.9rem;
+
+}
+/* Esto es del boton de login q pidio el profe */
+.boton-header {
+  display: inline-block;
+  background-color: #f5deb3;
+  color: #3b2a1a;
+  padding: 8px 18px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 24px;
+}
+
+.boton-header:hover {
+  background-color: #fff;
 }
