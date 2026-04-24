@@ -7,10 +7,21 @@
 
 /* === TIPOGRAFÍA BASE === */
 body {
-  font-family: 'Lato', sans-serif;
-  background-color: #fdf8f0;
-  color: #2c2c2c;
+  font-family: var(--fuente-cuerpo);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
 }
+header { grid-area: header; }
+main   { grid-area: main; }
+footer { grid-area: footer; }
 
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
@@ -173,4 +184,69 @@ footer {
 
 .boton-header:hover {
   background-color: #fff;
+}
+/* === GALERÍA === */
+.seccion-galeria {
+  padding: 60px 40px;
+  background-color: var(--color-fondo);
+}
+
+.seccion-galeria h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-primario);
+  margin-bottom: 32px;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.galeria-item:first-child {
+  grid-column: span 3;
+}
+
+/* === FLEXBOX DENTRO DE CADA TARJETA === */
+.galeria-item {
+  padding: 24px;
+  background-color: var(--color-primario);
+  color: #fdf8f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+}
+
+.galeria-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--color-acento);
+}
+
+.galeria-item p {
+  flex: 1;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.galeria-item a {
+  display: inline-block;
+  background-color: var(--color-acento);
+  color: var(--color-primario);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+
+.galeria-item a:hover {
+  background-color: #fff;
+}
+
+.destacado {
+  background-color: var(--color-secundario);
 }
